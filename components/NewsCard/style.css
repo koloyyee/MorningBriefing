@@ -1,0 +1,25 @@
+.article-grid {
+    display: grid;
+    gap: 1rem;
+}
+
+.news-cards {
+    height: 400px;
+    border: 1px solid grey;
+    border-radius: 1.5%;
+
+    display: flex;
+    flex-direction: column;
+    padding: 2rem;
+}
+
+.card-image {
+    width: 100%;
+    max-height: 250px;
+    object-fit: cover;
+    border-radius: 12%;
+
+}
+
+
+.news-cards:last-child {}
