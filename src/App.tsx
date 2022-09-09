@@ -1,11 +1,11 @@
 import Greetings from "../components/Greeting";
 import Nav from "../components/Nav";
-import NewsCard from "../components/NewsCard";
+import NewsGrid from "../components/NewsGrid";
 function App() {
   return (
     <div>
       <Greetings />
-      <NewsCard />
+      <NewsGrid />
       <Nav />
     </div>
   );

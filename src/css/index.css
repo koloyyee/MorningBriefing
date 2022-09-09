@@ -11,6 +11,24 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
+
+  --primary-color: #fff1e5;
+  --primary-color--alternative: #fff7ef;
+  --secondary-color: rgb(106, 106, 106);
+
+  --accent-primary-color: #9e1c47;
+  --accent-secondary-color: #0d7680;
+
+  --primary-font-color: #231f20;
+  --secondary-font-color: #ffffff;
+
+
+
+}
+
+body {
+  background-color: var(--primary-color);
+  color: var(--primary-font-color);
 }
 
 #root {
@@ -27,4 +45,15 @@ li {
 a {
   text-decoration: none;
   color: inherit;
+}
+
+small {
+  font-size: 0.7 rem;
+}
+
+@media (min-width: 650px) {
+  #root {
+    display: grid;
+  }
+
 }

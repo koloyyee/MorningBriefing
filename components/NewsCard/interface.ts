@@ -3,7 +3,7 @@ export interface NewscatcherInterface {
     articles: NewscatcherArticleInterface[]
 }
 
-interface NewscatcherArticleInterface {
+export interface NewscatcherArticleInterface {
     summary: string
     country: string
     author: string

@@ -1,0 +1,11 @@
+.pill-tag {
+
+    background-color: var(--accent-secondary-color);
+    padding: 0rem .75rem;
+    align-self: center;
+    border: none;
+    border-radius: 1rem;
+    color: var(--secondary-font-color);
+    margin: 0.5rem;
+    flex-direction: row;
+}
