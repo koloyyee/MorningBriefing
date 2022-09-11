@@ -2,7 +2,7 @@ import "./style.css";
 
 export default function Nav() {
   return (
-    <nav>
+    <nav className="nav">
       <ul className="menu">
         <li className="menu-item">
           <a href="#">Home</a>

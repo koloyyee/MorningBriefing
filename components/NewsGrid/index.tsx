@@ -1,31 +1,68 @@
-import { lazy, Suspense, useEffect, useState } from "react";
-import { NewscatcherInterface } from "../NewsCard/interface";
+import { Pagination } from "@mui/material";
+import { ChangeEvent, lazy, useState } from "react";
+import { NewscatcherArticleInterface } from "../NewsCard/interface";
 import "./style.css";
-
 const NewsCard = lazy(() => import("../NewsCard/index"));
 
-export default function NewsGrid() {
-  const [news, setArticles] = useState<NewscatcherInterface | undefined>();
+type NewsGridProps = {
+  searchResult: NewscatcherArticleInterface[];
+};
 
-  async function fetchArticleData() {
-    const resp = await fetch("../data/news.json");
-    const data: NewscatcherInterface = await resp.json();
-    setArticles(data);
+const NewsGrid: React.FC<NewsGridProps> = ({ searchResult }) => {
+  const ARTICLE_PER_PAGE = 7;
+
+  // Pagination, article shows on the page.
+  const [currentPage, setCurrentPage] = useState(1);
+  const [articlePerPage] = useState(ARTICLE_PER_PAGE);
+
+  // Current Articles
+  const indexOfLastArticle = currentPage * articlePerPage;
+  const indexOfFirstArticle = indexOfLastArticle - articlePerPage;
+  let sortedArticles = sortBy();
+  let currentArticle = sortedArticles.slice(
+    indexOfFirstArticle,
+    indexOfLastArticle
+  );
+
+  function sortBy(input: string = ""): NewscatcherArticleInterface[] {
+    switch (input) {
+      case "ranked":
+        return searchResult.sort(
+          (current, next) => parseInt(current.rank) - parseInt(next.rank)
+        );
+      default:
+        return searchResult.sort(
+          (current, next) =>
+            new Date(next["published_date"]).getDate() -
+            new Date(current["published_date"]).getDate()
+        );
+    }
   }
 
-  useEffect(() => {
-    fetchArticleData();
-  }, []);
-
-  console.log(news?.articles.length);
+  // Change page logic
+  const paginate = (e: ChangeEvent<unknown>, pageNumber: number) =>
+    setCurrentPage(pageNumber);
 
   return (
-    <div className="article-grid">
-      <Suspense fallback={<div> Loading... </div>}>
-        {news?.articles.map((article) => {
-          return <NewsCard {...article} />;
+    <>
+      <div className="article-grid">
+        {currentArticle?.map((article, index) => {
+          return (
+            <NewsCard dataKeyIndex={index} key={index} article={article} />
+          );
         })}
-      </Suspense>
-    </div>
+      </div>
+
+      <Pagination
+        className="pagination"
+        count={Math.ceil(searchResult.length / articlePerPage)}
+        page={currentPage}
+        onChange={paginate}
+        variant="outlined"
+        shape="rounded"
+      />
+    </>
   );
-}
+};
+
+export default NewsGrid;

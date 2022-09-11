@@ -1,3 +1,4 @@
+import "./style.css";
 enum Days {
   Sunday,
   Monday,
@@ -38,14 +39,14 @@ function Greetings() {
   let greet = getTime(hours, dayOfWeek);
 
   return (
-    <header className="greetings">
+    <div className="greetings">
       <img src="" alt="Logo" />
-      <h2>{greet}</h2>
+      <p>{greet}</p>
       <p>
         {date.getDate() > 10 ? date.getDate() : "0" + date.getDate()}/
         {date.getMonth() + 1}/{date.getFullYear()}
       </p>
-    </header>
+    </div>
   );
 }
 

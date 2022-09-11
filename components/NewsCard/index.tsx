@@ -2,12 +2,18 @@ import React from "react";
 import { NewscatcherArticleInterface } from "./interface";
 import "./style.css";
 
-import PillTag from "../Reusable/PillTag";
+import PillTag from "../Tag";
 
-const NewsCard: React.FC<NewscatcherArticleInterface> = (article) => {
+type NewsCardProps = {
+  article: NewscatcherArticleInterface;
+  dataKeyIndex: number;
+};
+
+const NewsCard: React.FC<NewsCardProps> = ({ article, dataKeyIndex }) => {
   return (
     <>
       <a
+        data-key={dataKeyIndex}
         key={article._id}
         href={article.link}
         target="_blank"
@@ -23,13 +29,9 @@ const NewsCard: React.FC<NewscatcherArticleInterface> = (article) => {
           }}
         />
         <h4 className="headline"> {article.title}</h4>
-        <a
-          className="news-rights"
-          href={"http://" + article.clean_url}
-          target="_blank"
-        >
-          <small>copyright: {article.rights}</small>
-        </a>
+
+        <small className="news-rights">copyright: {article.rights}</small>
+        <p className="summary">{article.summary}</p>
         <div className="card-footer">
           <PillTag props={article.topic} />
           <PillTag props={article.country} />
