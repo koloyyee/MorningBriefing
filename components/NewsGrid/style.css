@@ -10,7 +10,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    padding-block: 1.5rem;
+    padding-top: 1.5rem;
+    padding-bottom: 5rem;
     flex-wrap: wrap;
 }
 

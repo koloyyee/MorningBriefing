@@ -44,7 +44,7 @@ const NewsGrid: React.FC<NewsGridProps> = ({ searchResult }) => {
     setCurrentPage(pageNumber);
 
   return (
-    <>
+    <main>
       <div className="article-grid">
         {currentArticle?.map((article, index) => {
           return (
@@ -61,7 +61,7 @@ const NewsGrid: React.FC<NewsGridProps> = ({ searchResult }) => {
         variant="outlined"
         shape="rounded"
       />
-    </>
+    </main>
   );
 };
 

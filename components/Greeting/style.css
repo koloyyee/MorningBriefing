@@ -1,22 +1,21 @@
-.header {}
+.welcome {
+    display: grid;
 
-@media (min-width: 650px) {
-    .header {
-        position: sticky;
-        top: 0;
-        padding: 0;
-        margin-bottom: 3rem;
-        background-color: var(--primary-color);
-        display: grid;
-        grid-template-columns: 1em 200px repeat(5, 1fr) 200px 1em;
-        align-items: end;
-        gap: 1rem;
-        box-shadow: 50px 0px 60px white;
-    }
 }
 
 .greetings {
-    width: 100%;
-    padding-left: 1rem;
-    grid-column: 2/3;
+    grid-column: 1/ 2;
+}
+
+@media (min-width: 980px) {
+    .welcome {
+        grid-template-columns: 1em repeat(5, 1fr) 1em;
+
+    }
+
+    .greetings {
+        width: 100%;
+        padding-left: 1rem;
+        grid-column: 3;
+    }
 }

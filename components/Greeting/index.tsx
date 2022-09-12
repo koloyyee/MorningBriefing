@@ -39,8 +39,7 @@ function Greetings() {
   let greet = getTime(hours, dayOfWeek);
 
   return (
-    <div className="greetings">
-      <img src="" alt="Logo" />
+    <div className="greetings header-item">
       <p>{greet}</p>
       <p>
         {date.getDate() > 10 ? date.getDate() : "0" + date.getDate()}/

@@ -22,8 +22,9 @@ TODO:
 [x] - Get user location with Timezone
 [x] - Create news cards
 [x] - Fetch data within the component using useState, useEffect
-[x] - Create search bar for clients to search title.
-[] - Filter news by topic
+[x] - Search: Create search bar for clients to search title.
+[] - Routing: Through Nav link to a new page according category, fetch data accordingly.
+[] - Filter news by topic, country.
 [x] - Pagination
 [] - Deploy on github page and alias to my domain
 

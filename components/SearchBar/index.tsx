@@ -33,7 +33,7 @@ const SearchBar: React.FC<SearchBar> = ({ posts, setSearchResult }) => {
     e.preventDefault();
   };
   return (
-    <form className="search" onSubmit={handleSubmit}>
+    <form className="search header-item" onSubmit={handleSubmit}>
       <FontAwesomeIcon
         className="search-button"
         icon={faMagnifyingGlass as IconProp}

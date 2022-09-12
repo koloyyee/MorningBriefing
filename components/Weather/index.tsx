@@ -1,6 +1,10 @@
-import { useState } from "react";
-import OpenWeather from "../../data/weather";
-import TempInterface from "./interface";
+import axios from "axios";
+import { useEffect, useState } from "react";
+import getCity from "../../data/getUserTimezone";
+import { IconInterface, TempInterface } from "./interface";
+import "./style.css";
+
+const API = import.meta.env.VITE_OPEN_WEATHER;
 
 const Weather = () => {
   const emptyTemp: TempInterface = {
@@ -11,16 +15,39 @@ const Weather = () => {
     pressure: 0,
     humidity: 0,
   };
-
-  const [temp, setTemp] = useState<TempInterface>(emptyTemp);
-
-  const fetchOpenWeatherData = async () => {
-    const ow = new OpenWeather();
-    const cityTemp = await ow.getWeatherByCity();
-    console.log(cityTemp);
+  const emptyIcon: IconInterface = {
+    id: "",
+    main: "",
+    description: "",
+    icon: "",
   };
-  fetchOpenWeatherData();
-  return <div>{temp.temp}</div>;
+  const [weather, setWeather] = useState<TempInterface>(emptyTemp);
+  const [iconData, setIcon] = useState<IconInterface>(emptyIcon);
+
+  const fetchOpenWeatherMain = async () => {
+    let city = getCity();
+    const openWeather = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API}&units=metric`;
+    const fullData = await axios.get(openWeather);
+    const temp: TempInterface = fullData.data.main;
+    const iconData: IconInterface = fullData.data.weather[0];
+
+    setIcon(iconData);
+    setWeather(temp);
+  };
+  useEffect(() => {
+    fetchOpenWeatherMain();
+  }, []);
+
+  return (
+    <section className="weather header-item">
+      <p>{Math.round(weather.temp)}&#8451;</p>
+      <img
+        className="weather-icon"
+        src={`http://openweathermap.org/img/wn/${iconData.icon}@2x.png`}
+        alt={iconData.description}
+      />
+    </section>
+  );
 };
 
 export default Weather;

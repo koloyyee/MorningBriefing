@@ -2,13 +2,14 @@ import axios from 'axios';
 import 'dotenv/config';
 import { dirname } from 'node:path';
 import { fileURLToPath } from 'url';
-import TempInterface from '../components/Weather/interface';
+import { TempInterface } from '../components/Weather/interface';
 import getCity from "./getUserTimezone";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
-const API = process.env.REACT_APP_OPEN_WEATHER_API_KEY
+// const API = process.env.REACT_APP_OPEN_WEATHER_API_KEY
+const API = "f25a614f1390cd6fc8e146b78bfb92da"
 class OpenWeather {
     constructor() {
 
@@ -35,6 +36,7 @@ class OpenWeather {
         const openWeather = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API}&units=metric`
         const fullData = await axios.get(openWeather)
         const temp: TempInterface = fullData.data.main
+        console.log(fullData.data)
         return temp
     }
 }

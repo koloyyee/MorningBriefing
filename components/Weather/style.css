@@ -1,0 +1,39 @@
+.weather {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    justify-self: center;
+    align-self: center;
+
+    width: 60%;
+    max-width: 10rem;
+    height: 2rem;
+    padding: 0.2rem;
+
+    background-color: var(--secondary-font-color);
+    border-radius: 15px;
+
+    transition: all 200ms ease;
+
+    grid-column: 3 / 4;
+
+}
+
+.weather-icon {
+    width: 45%;
+}
+
+@media (min-width: 980px) {
+    .weather {
+        width: 80%;
+        height: 3rem;
+
+        grid-column: 5;
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+
+    .weather-icon {
+        width: 80%;
+    }
+}
