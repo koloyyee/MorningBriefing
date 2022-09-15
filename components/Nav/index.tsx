@@ -1,3 +1,4 @@
+import { Link } from "@mui/material";
 import "./style.css";
 
 export default function Nav() {
@@ -5,7 +6,7 @@ export default function Nav() {
     <nav className="nav">
       <ul className="menu">
         <li className="menu-item">
-          <a href="#">Home</a>
+          <Link href="/">Home</Link>
         </li>
         <li className="menu-item">
           <a href="#">Finance</a>

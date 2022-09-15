@@ -60,6 +60,7 @@ const NewsGrid: React.FC<NewsGridProps> = ({ searchResult }) => {
         onChange={paginate}
         variant="outlined"
         shape="rounded"
+        
       />
     </main>
   );

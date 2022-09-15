@@ -11,6 +11,8 @@ import MobileMenuBtn from "../components/MobileMenuBtn";
 import NewsGrid from "../components/NewsGrid";
 import Weather from "../components/Weather";
 
+const { VITE_BACKEND_URL } = import.meta.env;
+
 function App() {
   // Data from axios
 
@@ -25,30 +27,20 @@ function App() {
     NewscatcherArticleInterface[]
   >([]);
 
-  async function fetchData() {
-    const options = {
-      method: "GET",
-      url: "https://newscatcher.p.rapidapi.com/v1/latest_headlines",
-      params: { topic: "finance", lang: "en", media: "True" },
-      headers: {
-        "X-RapidAPI-Key": import.meta.env.VITE_RAPID_API_KEY,
-        "X-RapidAPI-Host": "newscatcher.p.rapidapi.com",
-      },
-    };
-
+  const fetchAPI = async () => {
+    const resp = await axios.get(`${VITE_BACKEND_URL}/newscatcher`);
+    const data = await resp.data;
+    console.log(data);
     setLoading(true);
-    axios.request(options).then(function (response) {
-      const data: NewscatcherInterface = response.data;
 
-      setArticles(data);
-      setSearchResult(data.articles);
+    setArticles(data);
+    setSearchResult(data.articles);
 
-      setLoading(false);
-    });
-  }
+    setLoading(false);
+  };
 
   useEffect(() => {
-    fetchData();
+    fetchAPI();
   }, []);
 
   return (

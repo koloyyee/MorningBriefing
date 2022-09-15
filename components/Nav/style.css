@@ -1,5 +1,5 @@
 .nav {
-    display: none;
+    /* display: none; */
     position: fixed;
     bottom: 0%;
     z-index: 1;
@@ -22,7 +22,7 @@
 @media (min-width: 700px) {
     .nav {
         position: inherit;
-        display: none;
+        /* display: none; */
         grid-column: 3/ 10;
         grid-row: 2;
         padding: 0;
