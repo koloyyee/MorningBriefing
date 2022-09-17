@@ -1,6 +1,6 @@
 import { Pagination } from "@mui/material";
 import { ChangeEvent, lazy, useState } from "react";
-import { NewscatcherArticleInterface } from "../NewsCard/interface";
+import { NewscatcherArticleInterface } from "../../interfaces/Newscatcher.interface";
 import "./style.css";
 const NewsCard = lazy(() => import("../NewsCard/index"));
 
@@ -60,7 +60,6 @@ const NewsGrid: React.FC<NewsGridProps> = ({ searchResult }) => {
         onChange={paginate}
         variant="outlined"
         shape="rounded"
-        
       />
     </main>
   );

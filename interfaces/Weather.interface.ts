@@ -6,6 +6,9 @@ export interface TempInterface {
     pressure: number
     humidity: number
 }
+export interface CurrentWeatherInterface extends TempInterface {
+    icon: IconInterface
+}
 
 interface IconWeatherInterface {
     weather: IconInterface[]

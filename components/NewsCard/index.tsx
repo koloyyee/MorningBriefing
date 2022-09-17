@@ -1,13 +1,14 @@
+/* eslint-disable max-len */
 import React from "react";
-import { NewscatcherArticleInterface } from "./interface";
+import { NewscatcherArticleInterface } from "../../interfaces/Newscatcher.interface";
 import "./style.css";
 
 import PillTag from "../Tag";
 
-type NewsCardProps = {
+interface NewsCardProps {
   article: NewscatcherArticleInterface;
   dataKeyIndex: number;
-};
+}
 
 const NewsCard: React.FC<NewsCardProps> = ({ article, dataKeyIndex }) => {
   return (
@@ -18,6 +19,7 @@ const NewsCard: React.FC<NewsCardProps> = ({ article, dataKeyIndex }) => {
         href={article.link}
         target="_blank"
         className="news-cards target-blank"
+        rel="noreferrer"
       >
         <img
           className="card-image"
@@ -31,6 +33,7 @@ const NewsCard: React.FC<NewsCardProps> = ({ article, dataKeyIndex }) => {
         <h4 className="headline"> {article.title}</h4>
 
         <small className="news-rights">copyright: {article.rights}</small>
+        <small className="news-rights date">{article.published_date}</small>
         <p className="summary">{article.summary}</p>
         <div className="card-footer">
           <PillTag props={article.topic} />

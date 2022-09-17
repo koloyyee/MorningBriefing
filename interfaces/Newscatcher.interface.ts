@@ -16,7 +16,7 @@ export interface NewscatcherArticleInterface {
     rights: string
     rank: string
     topic: string
-    published_date: Date
+    published_date: string
     _id: string
 }
 

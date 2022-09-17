@@ -7,7 +7,7 @@ import React, {
   FormEventHandler,
   SetStateAction,
 } from "react";
-import { NewscatcherArticleInterface } from "../NewsCard/interface";
+import { NewscatcherArticleInterface } from "../../interfaces/Newscatcher.interface";
 import "./style.css";
 
 type SearchBar = {

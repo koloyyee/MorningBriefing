@@ -1,9 +1,8 @@
 import React from "react";
-import Nav from "../Nav";
 import "./style.css";
 
+import { NewsSearchInterface } from "../../interfaces/NewsSearch.interface";
 import SearchBar from "../SearchBar";
-import { NewsSearchInterface } from "./interface";
 
 const Header: React.FC<NewsSearchInterface> = ({
   loading,
@@ -11,12 +10,9 @@ const Header: React.FC<NewsSearchInterface> = ({
   setSearchResult,
 }) => {
   return (
-    <>
-      <header className="header">
-        <SearchBar posts={news?.articles} setSearchResult={setSearchResult} />
-        <Nav />
-      </header>
-    </>
+    <header className="header">
+      <SearchBar posts={news?.articles} setSearchResult={setSearchResult} />
+    </header>
   );
 };
 

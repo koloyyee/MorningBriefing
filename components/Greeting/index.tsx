@@ -1,3 +1,6 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable indent */
+/* eslint-disable react/react-in-jsx-scope */
 import "./style.css";
 enum Days {
   Sunday,
@@ -9,11 +12,22 @@ enum Days {
   Saturday,
 }
 
+/**
+ *
+ * @param {T} type - generic type
+ * @param {number} day - get day number wit
+ * @return {string}
+ */
 function getToday<T>(type: T, day: number): T[keyof T] {
   const casted = day as keyof T;
   return type[casted];
 }
-
+/**
+ *
+ * @param {number} hours - JS Date hour.
+ * @param {Days} day - get from getToday
+ * @return {string}
+ */
 function getTime(hours: number, day: Days): string {
   let greet: string = "";
   switch (true) {
@@ -29,14 +43,17 @@ function getTime(hours: number, day: Days): string {
   }
   return greet;
 }
-
+/**
+ *
+ * @return {HTMLElement} Greeting - React Component
+ */
 function Greetings() {
   const date = new Date();
-  let today = date.getDay();
-  let dayOfWeek = getToday(Days, today);
-  let hours = date.getHours();
+  const today = date.getDay();
+  const dayOfWeek = getToday(Days, today);
+  const hours = date.getHours();
 
-  let greet = getTime(hours, dayOfWeek);
+  const greet = getTime(hours, dayOfWeek);
 
   return (
     <div className="greetings header-item">
