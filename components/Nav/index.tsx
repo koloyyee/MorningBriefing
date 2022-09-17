@@ -27,14 +27,18 @@ export default function Nav() {
   });
 
   // Clicking on the a tag to trigger change on endpoint
-  const [endpoint, setEndpoint] = useState("news");
+  const [endpoint, setEndpoint] = useState<string | undefined>("news");
   /**
-   * @param {Event} e - get the target value and change the fetch.
+   * @param {Event} event - get the target value and change the fetch.
    */
-  const queryTopic: MouseEventHandler<HTMLLIElement> = (e: MouseEvent) => {
-    const endpoint = e.target.dataset.endpoint;
-    setEndpoint(endpoint);
-    fetchAPI(endpoint);
+  const queryTopic: MouseEventHandler<HTMLAnchorElement> = (
+    event: React.MouseEvent
+  ) => {
+    if (event.target instanceof HTMLAnchorElement) {
+      const endpoint = event.target.dataset.endpoint;
+      setEndpoint(endpoint);
+      fetchAPI(endpoint);
+    }
   };
 
   // Search results
@@ -42,7 +46,7 @@ export default function Nav() {
     NewscatcherArticleInterface[]
   >([]);
 
-  const fetchAPI = async (value: string = endpoint) => {
+  const fetchAPI = async (value: string | undefined = endpoint) => {
     const resp = await axios.get(`${VITE_BACKEND_URL}/news/${value}`);
     const data = await resp.data;
     setLoading(true);
@@ -57,7 +61,6 @@ export default function Nav() {
   }, []);
 
   const topics = ["news", , "finance", "business", "tech", "food"];
-  console.log(news.articles.length);
 
   return (
     <>
@@ -66,8 +69,8 @@ export default function Nav() {
         <ul className="menu">
           {topics.map((topic, index) => {
             return (
-              <li key={index} className="menu-item" onClick={queryTopic}>
-                <NavItem endpoint={topic!} />
+              <li key={index} className="menu-item">
+                <NavItem endpoint={topic!} onClickHandler={queryTopic} />
               </li>
             );
           })}

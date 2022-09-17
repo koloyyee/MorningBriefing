@@ -5,7 +5,9 @@ const MobileMenuBtn = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   const handleDrawer = () => {
-    const header = document.getElementsByClassName("nav");
+    const header = document.getElementsByClassName(
+      "nav"
+    ) as HTMLCollectionOf<HTMLElement>;
     if (!isOpen) {
       header[0].style.display = "block";
       setIsOpen(true);

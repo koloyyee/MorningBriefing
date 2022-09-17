@@ -6,6 +6,7 @@
     left: 0%;
     padding: 1.5rem 4rem;
     background-color: var(--primary-color);
+    width: 100%;
 }
 
 .menu {
@@ -16,7 +17,7 @@
 
 .menu-item {
     list-style: none;
-    padding: 0 .5rem;
+    padding: 1rem .5rem 0rem;
 }
 
 @media (min-width: 700px) {

@@ -6,12 +6,13 @@
     margin: 0 auto;
 }
 
+
 .pagination {
     display: flex;
     justify-content: center;
     align-items: center;
     padding-top: 1.5rem;
-    padding-bottom: 5rem;
+    padding-bottom: 8em;
     flex-wrap: wrap;
 }
 
