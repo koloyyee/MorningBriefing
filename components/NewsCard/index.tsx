@@ -1,6 +1,7 @@
 /* eslint-disable max-len */
-import React from "react";
+import React, { useState } from "react";
 import { NewscatcherArticleInterface } from "../../interfaces/Newscatcher.interface";
+
 import "./style.css";
 
 import PillTag from "../Tag";
@@ -11,6 +12,12 @@ interface NewsCardProps {
 }
 
 const NewsCard: React.FC<NewsCardProps> = ({ article, dataKeyIndex }) => {
+  const [fallbackImg, setFallbackImg] = useState<string | undefined>(
+    "../../src/assets/latest_news.jpg"
+  );
+  const onError = () => {
+    setFallbackImg(fallbackImg);
+  };
   return (
     <>
       <a
@@ -25,10 +32,7 @@ const NewsCard: React.FC<NewsCardProps> = ({ article, dataKeyIndex }) => {
           className="card-image"
           src={article.media}
           alt={article.title}
-          onError={({ currentTarget }) => {
-            currentTarget.onerror = null;
-            currentTarget.src = "../../src/assets/latest_news.jpg";
-          }}
+          onError={onError}
         />
         <h4 className="headline"> {article.title}</h4>
 
