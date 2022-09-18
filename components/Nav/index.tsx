@@ -34,11 +34,13 @@ export default function Nav() {
   const queryTopic: MouseEventHandler<HTMLAnchorElement> = (
     event: React.MouseEvent
   ) => {
+    setLoading(true);
     if (event.target instanceof HTMLAnchorElement) {
       const endpoint = event.target.dataset.endpoint;
       setEndpoint(endpoint);
       fetchAPI(endpoint);
     }
+    setLoading(false);
   };
 
   // Search results
