@@ -4,7 +4,7 @@ import axios from "axios";
 import { MouseEventHandler, useEffect, useState } from "react";
 import {
   NewscatcherArticleInterface,
-  NewscatcherInterface,
+  NewscatcherInterface
 } from "../../interfaces/Newscatcher.interface";
 import Main from "../Main";
 import NavItem from "../NavItem";
@@ -78,7 +78,6 @@ export default function Nav() {
           })}
         </ul>
       </nav>
-
       <Main loading={loading} searchResult={searchResult} />
     </>
   );

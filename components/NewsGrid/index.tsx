@@ -1,5 +1,5 @@
 import { Pagination } from "@mui/material";
-import { ChangeEvent, lazy, useState } from "react";
+import { ChangeEvent, lazy, useRef, useState } from "react";
 import { NewscatcherArticleInterface } from "../../interfaces/Newscatcher.interface";
 import "./style.css";
 const NewsCard = lazy(() => import("../NewsCard/index"));
@@ -9,11 +9,14 @@ type NewsGridProps = {
 };
 
 const NewsGrid: React.FC<NewsGridProps> = ({ searchResult }) => {
-  const ARTICLE_PER_PAGE = 7;
+  const ARTICLE_PER_PAGE = 9;
 
   // Pagination, article shows on the page.
   const [currentPage, setCurrentPage] = useState(1);
   const [articlePerPage] = useState(ARTICLE_PER_PAGE);
+
+  // ref
+  const pageToTop = useRef<null | HTMLDivElement>(null)
 
   // Current Articles
   const indexOfLastArticle = currentPage * articlePerPage;
@@ -42,6 +45,8 @@ const NewsGrid: React.FC<NewsGridProps> = ({ searchResult }) => {
   // Change page logic
   const paginate = (e: ChangeEvent<unknown>, pageNumber: number) =>
     setCurrentPage(pageNumber);
+    
+   
 
   return (
     <section>
@@ -54,6 +59,7 @@ const NewsGrid: React.FC<NewsGridProps> = ({ searchResult }) => {
       </div>
 
       <Pagination
+
         className="pagination"
         count={Math.ceil(searchResult.length / articlePerPage)}
         page={currentPage}

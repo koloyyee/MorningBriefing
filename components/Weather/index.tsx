@@ -41,7 +41,7 @@ const Weather = () => {
       <p>{Math.round(weather.temp)}&#8451;</p>
       <img
         className="weather-icon"
-        src={`http://openweathermap.org/img/wn/${weather.icon.icon}@2x.png`}
+        src={`https://openweathermap.org/img/wn/${weather.icon.icon}@2x.png`}
         alt={weather.icon.description}
       />
     </section>
