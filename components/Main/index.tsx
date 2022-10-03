@@ -4,6 +4,7 @@ import { NewscatcherArticleInterface } from "../../interfaces/Newscatcher.interf
 import loadingGif from "../../src/assets/loading.gif";
 import Greetings from "../Greeting";
 import NewsGrid from "../NewsGrid";
+import Weather from "../Weather";
 import "./style.css";
 
 type MainProps = {
@@ -23,8 +24,8 @@ const Main: React.FC<MainProps> = ({ loading, searchResult }) => {
             alt="fetching data"
           />
         ) : (
-          <></>
-          // <Weather />
+          // <></>
+          <Weather />
         )}
       </div>
       <NewsGrid searchResult={searchResult} />
