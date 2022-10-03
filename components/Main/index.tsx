@@ -18,6 +18,7 @@ const Main: React.FC<MainProps> = ({ loading, searchResult , isSearching}) => {
     <main>
       <div className="welcome">
         <Greetings />
+
         {loading ? (
           <img
             className="weather-icon loading"

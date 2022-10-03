@@ -19,6 +19,8 @@ const { VITE_BACKEND_URL } = import.meta.env;
  * Header
  * @return {void}
  */
+
+
 export default function Nav() {
   const [loading, setLoading] = useState(true);
   const [news, setArticles] = useState<NewscatcherInterface>({
@@ -69,7 +71,11 @@ export default function Nav() {
   return (
     <>
       <nav className="nav">
-        <SearchBar posts={news?.articles} setSearchResult={setSearchResult} setIsSearching={setIsSearching}/>
+        <section>
+          <h1 id="site-title">The Morning Brief </h1>
+          <SearchBar posts={news?.articles} setSearchResult={setSearchResult} setIsSearching={setIsSearching}/>
+        </section>
+
         <ul className="menu">
           {topics.map((topic, index) => {
             return (

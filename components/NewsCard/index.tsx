@@ -18,14 +18,25 @@ const NewsCard: React.FC<NewsCardProps> = ({ article, dataKeyIndex }) => {
   const onError = () => {
     setFallbackImg(fallbackImg);
   };
+ 
+  const showMore =(event:React.MouseEvent)=>{
+    const showContent = document.getElementById(event.target.dataset.target)
+    if(showContent?.classList.contains('expand-active')){
+      event.currentTarget.textContent = event.target.dataset.showtext
+    } else {
+      event.currentTarget.textContent = event.target.dataset.hidetext 
+    }
+    showContent?.classList.toggle('expand-active')
+  }
+
   return (
-    <>
+    <div className="news-cards" data-key={dataKeyIndex}>
       <a
-        data-key={dataKeyIndex}
+        
         key={article._id}
         href={article.link}
         target="_blank"
-        className="news-cards target-blank"
+        className="target-blank"
         rel="noreferrer"
       >
         <img
@@ -34,19 +45,28 @@ const NewsCard: React.FC<NewsCardProps> = ({ article, dataKeyIndex }) => {
           alt={article.title}
           onError={onError}
         />
+      </a>
+
         <h4 className="headline"> {article.title}</h4>
 
         <small className="news-rights">copyright: {article.rights}</small>
         <small className="news-rights date">{article.published_date}</small>
-        <p className="summary">{article.summary}</p>
+        <p className="summary" id={article._id}>{article.summary}</p>
+        <div className="show-more">
+          <span 
+          expand-more="true" 
+          data-hidetext="show less..." data-showtext="show more..." 
+          data-target={article._id} className="summary"
+          onClick={showMore}
+          >...show more</span>
+        </div>
         <div className="card-footer">
           <PillTag props={article.topic} />
           <PillTag props={article.country} />
 
           <i className="fa-solid fa-arrow-up-right-from-square"></i>
         </div>
-      </a>
-    </>
+    </div>
   );
 };
 export default NewsCard;

@@ -35,7 +35,7 @@
         grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     }
 
-    .article-grid a:first-child {
+    .article-grid div:first-child {
         grid-column: span 2;
         grid-row: span 2;
         max-width: 100%;

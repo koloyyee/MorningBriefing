@@ -3,3 +3,23 @@
     justify-self: center;
     align-self: center;
 }
+
+.site-title{
+    font-size: 1rem;
+}
+
+@media (min-width: 700px ) {
+    .site-title{
+
+            display:flex;
+            text-align: center;
+            font-family: serif;
+            word-spacing: 10px;
+            font-size: 3rem;
+            justify-content: center;
+            align-items: center;
+            text-shadow: 0px 0px 10px lightgrey;
+            
+    }
+    
+}
