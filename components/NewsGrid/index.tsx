@@ -46,11 +46,15 @@ const NewsGrid: React.FC<NewsGridProps> = ({ searchResult }) => {
   const paginate = (e: ChangeEvent<unknown>, pageNumber: number) =>
     setCurrentPage(pageNumber);
     
-   
+    const scrollToTop=() =>{
+      pageToTop.current?.scrollIntoView({
+        behavior:"smooth"
+      })
+    }
 
   return (
     <section>
-      <div className="article-grid">
+      <div className="article-grid" ref={pageToTop}>
         {currentArticle?.map((article, index) => {
           return (
             <NewsCard dataKeyIndex={index} key={index} article={article} />
@@ -66,6 +70,7 @@ const NewsGrid: React.FC<NewsGridProps> = ({ searchResult }) => {
         onChange={paginate}
         variant="outlined"
         shape="rounded"
+        onClick={scrollToTop}
       />
     </section>
   );
