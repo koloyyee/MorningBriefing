@@ -19,7 +19,7 @@ const { VITE_BACKEND_URL } = import.meta.env;
  * Header
  * @return {void}
  */
-export default function Nav({children}) {
+export default function Nav() {
   const [loading, setLoading] = useState(true);
   const [news, setArticles] = useState<NewscatcherInterface>({
     status: "",

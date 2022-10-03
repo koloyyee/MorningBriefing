@@ -48,6 +48,8 @@ const NewsGrid: React.FC<NewsGridProps> = ({ searchResult }) => {
     
     const scrollToTop=() =>{
       pageToTop.current?.scrollIntoView({
+        inline:"start",
+        block:"start",
         behavior:"smooth"
       })
     }

@@ -5,7 +5,7 @@ import React, {
   ChangeEvent,
   Dispatch,
   FormEventHandler,
-  SetStateAction,
+  SetStateAction
 } from "react";
 import { NewscatcherArticleInterface } from "../../interfaces/Newscatcher.interface";
 import "./style.css";
@@ -21,12 +21,14 @@ const SearchBar: React.FC<SearchBar> = ({ posts, setSearchResult }) => {
     if (!target.value) return setSearchResult(posts);
     const results = posts.filter((post) => {
       if (
-        post.title.toLowerCase().includes(target.value.toLowerCase()) ||
-        post.summary.toLowerCase().includes(target.value.toLowerCase())
+        post.title.toLowerCase().includes(target.value.toLowerCase().trim()) ||
+        post.summary.toLowerCase().includes(target.value.toLowerCase().trim())
       )
         return posts;
     });
     setSearchResult(results);
+
+    
   };
 
   const handleSubmit: FormEventHandler = (e) => {
