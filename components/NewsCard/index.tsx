@@ -20,14 +20,20 @@ const NewsCard: React.FC<NewsCardProps> = ({ article, dataKeyIndex }) => {
   };
  
   const showMore =(event:React.MouseEvent)=>{
-    const showContent = document.getElementById(event.target.dataset.target)
-    if(showContent?.classList.contains('expand-active')){
-      event.currentTarget.textContent = event.target.dataset.showtext
-    } else {
-      event.currentTarget.textContent = event.target.dataset.hidetext 
+      if (event.target instanceof HTMLElement){
+          const showContent = document.getElementById(event.target.dataset.target!)
+          if(showContent?.classList.contains('expand-active')){
+            event.currentTarget.textContent = event.target.dataset.showtext!
+          } else {
+            event.currentTarget.textContent = event.target.dataset.hidetext !
+          }
+          showContent?.classList.toggle('expand-active')
+
+      }
+
+
     }
-    showContent?.classList.toggle('expand-active')
-  }
+  
 
   return (
     <div className="news-cards" data-key={dataKeyIndex}>
