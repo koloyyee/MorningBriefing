@@ -47,6 +47,7 @@ export default function Nav() {
   const [searchResult, setSearchResult] = useState<
     NewscatcherArticleInterface[]
   >([]);
+  const [isSearching, setIsSearching] = useState(false)
 
   const fetchAPI = async (value: string | undefined = endpoint) => {
     const resp = await axios.get(`${VITE_BACKEND_URL}/news/${value}`);
@@ -56,6 +57,7 @@ export default function Nav() {
     setArticles(data);
     setSearchResult(data.articles);
     setLoading(false);
+    setIsSearching(false);
   };
 
   useEffect(() => {
@@ -67,7 +69,7 @@ export default function Nav() {
   return (
     <>
       <nav className="nav">
-        <SearchBar posts={news?.articles} setSearchResult={setSearchResult} />
+        <SearchBar posts={news?.articles} setSearchResult={setSearchResult} setIsSearching={setIsSearching}/>
         <ul className="menu">
           {topics.map((topic, index) => {
             return (
@@ -78,7 +80,7 @@ export default function Nav() {
           })}
         </ul>
       </nav>
-      <Main loading={loading} searchResult={searchResult} />
+      <Main loading={loading} searchResult={searchResult} isSearching={isSearching} />
     </>
   );
 }

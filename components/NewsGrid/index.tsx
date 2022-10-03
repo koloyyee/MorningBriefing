@@ -6,11 +6,11 @@ const NewsCard = lazy(() => import("../NewsCard/index"));
 
 type NewsGridProps = {
   searchResult: NewscatcherArticleInterface[];
+  isSearching : boolean;
 };
 
-const NewsGrid: React.FC<NewsGridProps> = ({ searchResult }) => {
+const NewsGrid: React.FC<NewsGridProps> = ({ searchResult, isSearching }) => {
   const ARTICLE_PER_PAGE = 9;
-
   // Pagination, article shows on the page.
   const [currentPage, setCurrentPage] = useState(1);
   const [articlePerPage] = useState(ARTICLE_PER_PAGE);
@@ -54,14 +54,22 @@ const NewsGrid: React.FC<NewsGridProps> = ({ searchResult }) => {
       })
     }
 
+
+
   return (
     <section>
       <div className="article-grid" ref={pageToTop}>
-        {currentArticle?.map((article, index) => {
+        {!isSearching? 
+        currentArticle?.map((article, index) => {
           return (
             <NewsCard dataKeyIndex={index} key={index} article={article} />
           );
-        })}
+        }) :
+        searchResult?.map((article, index) => {
+          return (
+            <NewsCard dataKeyIndex={index} key={index} article={article} />
+          );
+        })} 
       </div>
 
       <Pagination

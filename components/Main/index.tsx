@@ -10,9 +10,10 @@ import "./style.css";
 type MainProps = {
   loading: boolean;
   searchResult: NewscatcherArticleInterface[];
+  isSearching: boolean;
 };
 
-const Main: React.FC<MainProps> = ({ loading, searchResult }) => {
+const Main: React.FC<MainProps> = ({ loading, searchResult , isSearching}) => {
   return (
     <main>
       <div className="welcome">
@@ -28,7 +29,7 @@ const Main: React.FC<MainProps> = ({ loading, searchResult }) => {
           <Weather />
         )}
       </div>
-      <NewsGrid searchResult={searchResult} />
+      <NewsGrid searchResult={searchResult} isSearching={isSearching}/>
     </main>
   );
 };

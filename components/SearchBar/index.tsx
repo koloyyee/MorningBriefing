@@ -13,21 +13,27 @@ import "./style.css";
 type SearchBar = {
   posts: NewscatcherArticleInterface[];
   setSearchResult: Dispatch<SetStateAction<NewscatcherArticleInterface[]>>;
+  setIsSearching: Dispatch<SetStateAction<boolean>>
 };
 
-const SearchBar: React.FC<SearchBar> = ({ posts, setSearchResult }) => {
+const SearchBar: React.FC<SearchBar> = ({ posts, setSearchResult, setIsSearching }) => {
   const handleChange = (e: ChangeEvent) => {
     let target = e.target as HTMLInputElement;
-    if (!target.value) return setSearchResult(posts);
-    const results = posts.filter((post) => {
-      if (
-        post.title.toLowerCase().includes(target.value.toLowerCase().trim()) ||
-        post.summary.toLowerCase().includes(target.value.toLowerCase().trim())
-      )
-        return posts;
-    });
-    setSearchResult(results);
 
+    if (!target.value || target.value === "") {
+      setSearchResult(posts) 
+      setIsSearching(false)
+    } else{
+      const results = posts.filter((post) => {
+        console.log(posts)
+          return post.title.toLowerCase().includes(target.value.toLowerCase().trim()) ||
+           post.summary.toLowerCase().includes(target.value.toLowerCase().trim())
+          
+      });
+      setSearchResult(results);
+      setIsSearching(true);
+
+    }
     
   };
 
